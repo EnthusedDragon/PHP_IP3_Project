@@ -2,7 +2,6 @@
 
     class Customer {
         
-        private $id;
         private $name;
         private $surname;
         private $address;
@@ -11,9 +10,8 @@
         private $bank;
         private $card_no;
         
-        public function __construct($id, $name, $surname, $address, $email, $password, $bank, $card_no) {
+        public function __construct($name, $surname, $address, $email, $password, $bank, $card_no) {
             
-            $this->id = $id;
             $this->name = $name;
             $this->surname = $surname;
             $this->address = $address;
