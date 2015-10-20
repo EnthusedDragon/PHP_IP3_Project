@@ -1,6 +1,5 @@
 <?php
     session_start(); 
-    require_once 'DisplayItems.php';
     
     if(isset($_GET['login'])) {
 
@@ -9,16 +8,15 @@
         echo $doc->saveHTML();
         exit;
     }
-    else
-        if(isset($_GET['signup'])) {
+    else if(isset($_GET['signup'])) {
 
-            $doc = new DOMDocument();
-            $doc->loadHTMLFile("NewCustomerPage.html");
-            echo $doc->saveHTML();
-            exit;
-        }
-        else if(isset($_GET['btnsearch']))
-        {                
-            get($_GET["search"]);
-        }
+        $doc = new DOMDocument();
+        $doc->loadHTMLFile("NewCustomerPage.html");
+        echo $doc->saveHTML();
+        exit;
+    }
+    /*else if(isset($_GET['btnsearch']))
+    {                
+        get($_GET["search"]);
+    }*/
 ?>

@@ -1,9 +1,9 @@
 <?php
 
 
-    function get($search) {
+    //function get($search) {
         
-       $conn = new mysqli("localhost","root","fjab1991","ip3_php_project_db");
+       $conn = new mysqli("localhost","root","","ip3_php_project_db");
 		
 
 		if ($conn->connect_error) {
@@ -11,17 +11,45 @@
 			die('Could not connect to database!');
 		}
 		else {
-                    //search = $_GET["search"];
+                    if(!isset($_GET["btnsearch"]))
+                    {
+                        $search = "";
+                    }
+                    else 
+                    {
+                        $search = $_GET["search"];
+                    }
+                    
 			$query = "SELECT * FROM items WHERE item_name LIKE '%$search%'";
 
 			if($query_run = $conn->query($query)) {
-                        $doc = new DOMDocument();
-                        $doc->loadHTMLFile("HomePage.html");
-                        echo $doc->saveHTML();
+                           
 					
 					echo'<html>'; 
+                                        
+                                        echo'<head>';
+                                        echo'<title>Pandora\'s Box Home</title>';
+                                        echo'<meta charset="UTF-8">';
+                                        echo'<meta name="viewport" content="width=device-width, initial-scale=1.0">';
+                                        echo'</head>';
+                                        
 					echo '<body>';
 					
+                                        echo'<h1 align=center>Pandora\'s Box</h1>';
+                                        echo'<div align="center">';
+                                        echo'<form action="DisplayItems.php">';
+
+                                        echo'<p><input type="text" name="search" /> <input type="submit" class="button" value="Search" name="btnsearch" /> </p>';
+                                        echo'</form>';
+                                        
+                                        echo'<form action="Navigation.php">';
+                                        echo'<p><input type="submit" value="login" name="login"/> <input type="submit" value="signup" name="signup"/></p>';
+
+
+
+                                        echo'</form>';
+                                        echo'</div>';
+                                        
 					echo'<table width="100%" align=center style="border-style:solid;">'; 
 					
 					echo'<tr width=100% align=center style="border-style:solid;">'; 
@@ -54,7 +82,7 @@
 				exit;
 			}
 		}
-        }
+        //}
         
 ?>
 

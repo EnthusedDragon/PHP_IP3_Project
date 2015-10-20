@@ -9,7 +9,7 @@
 
         $email = $_GET["email"];
         $password = $_GET["password"];
-        $conn = new mysqli("localhost","root","fjab1991","ip3_php_project_db");
+        $conn = new mysqli("localhost","root","","ip3_php_project_db");
         
         $query = "SELECT * FROM customer WHERE customer_email = '$email' AND customer_password = '$password'";
 
@@ -33,14 +33,16 @@
                 if($valEmail == $email && $valEmail!=null && $valPass == $password && $valPass!=null) {
                     
                     $doc = new DOMDocument();
-                    $doc->loadHTMLFile("HomePage.html");
-    //                $a = $doc->getElementById("signup");
-    //                $a->setAttribute("logout", "logout");
+                    $doc->loadHTMLFile("DisplayItems.php");
                     echo $doc->saveHTML();
+                    exit;
                 }
                 else {
-                    
+                    $doc = new DOMDocument();
+                    $doc->loadHTMLFile("LoginPage.html");
+                    echo $doc->saveHTML();
                     echo "Invalid details";
+                    exit;
                 }
             }
             else {
