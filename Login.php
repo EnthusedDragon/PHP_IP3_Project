@@ -1,8 +1,21 @@
+
+<!--
+    James Joubert 212104578
+    Faizel Jabaar 211093041 
+    Ryan Carstens 213133040
+-->
+
 <?php
 
+    //session_start();
+    
     if (isset($_GET["btnLogin"])) {
             
         get();
+    }
+    else if($_GET["btnSignUp"]) {
+        
+        require("NewCustomerPage.html");
     }
             
     function get() {
@@ -21,26 +34,38 @@
 
             if($query_run=$conn->query($query)) {
                 
+                $valID = null;
+                $valName = null;
+                $valSurname = null;
+                $valAddress = null;
                 $valEmail = null;
                 $valPass = null;
+                $valBank = null;
+                $valCard = null;
                 
                 while ($query_row = $query_run->fetch_assoc()) {
                 
+                    $valID = $query_row["customer_id"];
+                    $valName = $query_row["customer_name"];
+                    $valSurname = $query_row["customer_surname"];
+                    $valAddress = $query_row["customer_address"];
                     $valEmail = $query_row["customer_email"];
                     $valPass = $query_row["customer_password"];
+                    $valBank = $query_row["customer_bank"];
+                    $valCard = $query_row["customer_card_no"];
                 }
                 
                 if($valEmail == $email && $valEmail!=null && $valPass == $password && $valPass!=null) {
                     
-                    $doc = new DOMDocument();
-                    $doc->loadHTMLFile("HomePage.html");
-    //                $a = $doc->getElementById("signup");
-    //                $a->setAttribute("logout", "logout");
-                    echo $doc->saveHTML();
+                    require("index.php");
+                    exit;
                 }
                 else {
-                    
+                    $doc = new DOMDocument();
+                    $doc->loadHTMLFile("LoginPage.html");
+                    echo $doc->saveHTML();
                     echo "Invalid details";
+                    exit;
                 }
             }
             else {
