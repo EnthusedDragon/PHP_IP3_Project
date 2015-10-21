@@ -24,7 +24,7 @@
         $bank = $_GET["bank"];
         $card_no = $_GET["cardNo"];
         
-        $conn = new mysqli("localhost","root","fjab1991","ip3_php_project_db");
+        $conn = new mysqli("localhost","root","","ip3_php_project_db");
         $query = "INSERT INTO customer(customer_name,customer_surname,customer_address,customer_email,customer_password,customer_bank,customer_card_no) VALUES('$name', '$surname', '$address', '$email', '$password', '$bank', '$card_no')";
         
         if($name=="" || $name==null || $surname=="" || $surname=null || $address=="" || $address==null || $email=="" || $email==null || $password=="" || $password==null || $bank=="" || $bank==null || $card_no=="" || $card_no==null)
