@@ -22,7 +22,7 @@
 
         $email = $_GET["email"];
         $password = $_GET["password"];
-        $conn = new mysqli("localhost","root","","ip3_php_project_db");
+        $conn = new mysqli("localhost","root","fjab1991","ip3_php_project_db");
         
         $query = "SELECT * FROM customer WHERE customer_email = '$email' AND customer_password = '$password'";
 
@@ -57,13 +57,11 @@
                 
                 if($valEmail == $email && $valEmail!=null && $valPass == $password && $valPass!=null) {
                     
-<<<<<<< HEAD
                     require("index.php");
-=======
+
                     $doc = new DOMDocument();
                     $doc->loadHTMLFile("DisplayItems.php");
                     echo $doc->saveHTML();
->>>>>>> 81c5571ae4457391f8b9810ce597c36c4495b6ec
                     exit;
                 }
                 else {

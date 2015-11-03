@@ -3,7 +3,7 @@
 
     //function get($search) {
         
-       $conn = new mysqli("localhost","root","","ip3_php_project_db");
+       $conn = new mysqli("localhost","root","fjab1991","ip3_php_project_db");
 		
 
 		if ($conn->connect_error) {
